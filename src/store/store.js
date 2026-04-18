@@ -1,22 +1,25 @@
-/**
- * GyaanSetu — Redux Store Configuration
- *
- * Combines all feature slices into a single store.
- * Redux DevTools are enabled automatically in development.
- */
 import { configureStore } from '@reduxjs/toolkit';
-import uiReducer from '@/features/ui/uiSlice';
+import authReducer from '../features/auth/authSlice';
+import userReducer from '../features/user/userSlice';
+import coursesReducer from '../features/courses/coursesSlice';
+import labsReducer from '../features/labs/labsSlice';
+import uiReducer from '../features/ui/uiSlice';
+import languageReducer from '../features/language/languageSlice';
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
+    user: userReducer,
+    courses: coursesReducer,
+    labs: labsReducer,
     ui: uiReducer,
-    // auth: authReducer,        // Added in Part 2
-    // user: userReducer,        // Added in Part 2
-    // courses: coursesReducer,  // Added in Part 2
-    // labs: labsReducer,        // Added in Part 2
-    // language: languageReducer, // Added in Part 2
+    language: languageReducer,
   },
-  devTools: import.meta.env.DEV,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: false, // For flexibility with complex data objects if needed
+    }),
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export default store;

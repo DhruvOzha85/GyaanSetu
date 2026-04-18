@@ -110,3 +110,15 @@ export const clearSession = () => {
     console.warn('Failed to clear sessionStorage:', error);
   }
 };
+const storage = {
+  getItem,
+  setItem,
+  removeItem,
+  clearAll,
+  getSessionItem,
+  setSessionItem,
+  removeSessionItem,
+  clearSession,
+};
+
+export default storage;

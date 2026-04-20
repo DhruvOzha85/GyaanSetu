@@ -29,7 +29,7 @@ const GoalSetting = lazy(() => import('../pages/onboarding/GoalSetting'));
 
 const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'));
 const MyCourses = lazy(() => import('../pages/dashboard/Dashboard'));
-const CourseLearning = lazy(() => import('../pages/dashboard/Dashboard'));
+const CourseLearning = lazy(() => import('../pages/courses/CourseLearning'));
 const LabCatalog = lazy(() => import('../pages/dashboard/Dashboard'));
 const LabEnvironment = lazy(() => import('../pages/dashboard/Dashboard'));
 const ProjectCatalog = lazy(() => import('../pages/dashboard/Dashboard'));
@@ -73,16 +73,16 @@ const AppRouter = () => {
           <Route element={<DashboardLayout />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/my-courses" element={<MyCourses />} />
-            <Route path="/courses/:courseId/learn" element={<CourseLearning />} />
             <Route path="/labs" element={<LabCatalog />} />
             <Route path="/labs/:labId" element={<LabEnvironment />} />
             <Route path="/projects" element={<ProjectCatalog />} />
-            <Route path="/projects/:projectId" element={<ProjectWorkspace />} />
-            <Route path="/profile" element={<StudentProfile />} />
-            <Route path="/profile/:userId" element={<StudentProfile />} />
             <Route path="/leaderboard" element={<Leaderboard />} />
             <Route path="/settings" element={<Settings />} />
           </Route>
+
+          {/* Immersive routes (No sidebar) */}
+          <Route path="/courses/:courseId/learn" element={<CourseLearning />} />
+          <Route path="/labs/:labId" element={<LabEnvironment />} />
         </Route>
 
         {/* 404 */}

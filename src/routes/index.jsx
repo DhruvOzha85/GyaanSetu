@@ -5,6 +5,7 @@ import { lazy, Suspense } from 'react';
 // Components & Layouts
 import PublicLayout from '../components/layout/PublicLayout';
 import DashboardLayout from '../components/layout/DashboardLayout';
+import AuthLayout from '../components/layout/AuthLayout';
 import PublicRoute from './PublicRoute';
 import ProtectedRoute from './ProtectedRoute';
 import FullPageLoader from '../components/ui/FullPageLoader';
@@ -20,8 +21,8 @@ const InstructorProfile = lazy(() => import('../pages/public/Landing'));
 const NotFound = lazy(() => import('../pages/public/Landing'));
 
 const Login = lazy(() => import('../pages/auth/Login'));
-const Signup = lazy(() => import('../pages/auth/Login'));
-const ForgotPassword = lazy(() => import('../pages/auth/Login'));
+const Signup = lazy(() => import('../pages/auth/Signup'));
+const ForgotPassword = lazy(() => import('../pages/auth/ForgotPassword'));
 
 const LanguageSelection = lazy(() => import('../pages/onboarding/LanguageSelection'));
 const GoalSetting = lazy(() => import('../pages/onboarding/GoalSetting'));
@@ -55,9 +56,11 @@ const AppRouter = () => {
 
         {/* AUTH ROUTES */}
         <Route element={<PublicRoute />}>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+          </Route>
         </Route>
 
         {/* PROTECTED ROUTES */}

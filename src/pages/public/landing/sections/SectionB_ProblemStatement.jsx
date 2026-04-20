@@ -20,10 +20,10 @@ const SectionB_ProblemStatement = () => {
   return (
     <section className="py-16 bg-teal-50/50 dark:bg-teal-900/10">
       <div className="container mx-auto px-4 md:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-200 dark:bg-slate-800 rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           
           {/* Problem Side */}
-          <div className="bg-white dark:bg-slate-950 p-8 md:p-12">
+          <div className="bg-white dark:bg-slate-950 p-8 md:p-12 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-100 dark:shadow-none">
             <div className="flex items-center space-x-3 mb-8">
               <div className="p-2 rounded-xl bg-rose-50 text-rose-500">
                 <XCircle size={24} />
@@ -48,7 +48,7 @@ const SectionB_ProblemStatement = () => {
           </div>
 
           {/* Solution Side */}
-          <div className="bg-white dark:bg-slate-950 p-8 md:p-12 relative">
+          <div className="bg-white dark:bg-slate-950 p-8 md:p-12 rounded-[2.5rem] border border-slate-100 dark:border-slate-800 shadow-xl shadow-slate-100 dark:shadow-none relative overflow-hidden">
             {/* Visual Highlight */}
             <div className="absolute top-0 right-0 p-4">
               <span className="text-[100px] font-black text-teal-500 opacity-5 pointer-events-none">SETU</span>

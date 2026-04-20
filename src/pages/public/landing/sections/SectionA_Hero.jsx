@@ -56,13 +56,17 @@ const SectionA_Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4"
+              className="flex flex-wrap items-center gap-4 pt-6"
             >
-              <Link to="/signup">
-                <Button size="lg" icon={ArrowRight}>Start Learning Free</Button>
+              <Link to="/signup" className="flex-shrink-0">
+                <Button size="xl" className="px-10 shadow-xl shadow-orange-200 dark:shadow-none" icon={ArrowRight}>
+                  Start Learning Free
+                </Button>
               </Link>
-              <Link to="/courses">
-                <Button variant="outline" size="lg">Explore Courses</Button>
+              <Link to="/courses" className="flex-shrink-0">
+                <Button variant="outline" size="xl" className="px-10 border-2">
+                  Explore Courses
+                </Button>
               </Link>
             </motion.div>
 
@@ -70,7 +74,7 @@ const SectionA_Hero = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.6 }}
-              className="pt-8 grid grid-cols-2 md:flex md:items-center gap-4 text-slate-500 dark:text-slate-400"
+              className="pt-10 grid grid-cols-2 lg:flex lg:items-center gap-6 text-slate-700 dark:text-slate-300"
             >
               {[
                 '10,000+ Students',
@@ -78,10 +82,10 @@ const SectionA_Hero = () => {
                 '5 Languages',
                 '98% Placement'
               ].map((stat, i) => (
-                <div key={i} className="flex items-center space-x-2 text-sm font-bold">
-                  <CheckCircle size={14} className="text-secondary" />
+                <div key={i} className="flex items-center space-x-2 text-sm font-black">
+                  <CheckCircle size={16} className="text-secondary" />
                   <span>{stat}</span>
-                  {i < 3 && <span className="hidden md:block mx-2 opacity-30">|</span>}
+                  {i < 3 && <div className="hidden lg:block w-px h-4 bg-slate-200 dark:bg-slate-800 mx-4" />}
                 </div>
               ))}
             </motion.div>

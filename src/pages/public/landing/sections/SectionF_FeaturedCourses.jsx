@@ -29,7 +29,7 @@ const SectionF_FeaturedCourses = () => {
           </div>
 
           {/* Tabs */}
-          <div className="flex items-center p-1.5 bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-x-auto no-scrollbar">
+          <div className="flex items-center p-1.5 bg-slate-100 dark:bg-slate-900 rounded-2xl overflow-x-auto no-scrollbar gap-2">
             {tabs.map((tab) => (
               <button
                 key={tab}

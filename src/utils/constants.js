@@ -31,7 +31,7 @@ export const PUBLIC_NAV_LINKS = [
 export const DASHBOARD_NAV_LINKS = [
   { label: 'Dashboard', href: '/dashboard', icon: 'GridView' },
   { label: 'My Courses', href: '/my-courses', icon: 'MenuBook' },
-  { label: 'Labs', href: '/labs', icon: 'Science' },
+  { label: 'Labs', href: '/labs', icon: 'FlaskConical' },
   { label: 'Projects', href: '/projects', icon: 'Work' },
   { label: 'Leaderboard', href: '/leaderboard', icon: 'EmojiEvents' },
   { label: 'Profile', href: '/profile', icon: 'Person' },

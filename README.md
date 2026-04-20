@@ -13,6 +13,10 @@
 
 <br/>
 
+[![Figma Design](https://img.shields.io/badge/Figma-Design%20Link-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/VJS8z63ENFBdYR7R6728i3/GyaanSetu?node-id=0-1&t=z29S6KUnC5jqRb88-1)
+
+<br/>
+
 > **"Gyaan" (ज्ञान / જ્ઞાન) = Knowledge &nbsp;|&nbsp; "Setu" (सेतु / સેતુ) = Bridge**
 >
 > *GyaanSetu is the bridge that connects every Indian student — regardless of language, city, or background — to world-class, industry-ready education.*

@@ -240,3 +240,94 @@ export const mockTestimonials = [
     tier: 'Tier 2'
   }
 ];
+
+// ─── Dashboard Specific Data ────────────────────────────────────────
+
+export const mockEnrolledCourses = [
+  {
+    ...mockCourses[0],
+    progress: 45,
+    lastAccessed: '2 hours ago',
+  },
+  {
+    ...mockCourses[2],
+    progress: 12,
+    lastAccessed: 'Yesterday',
+  }
+];
+
+export const mockRecommendedLabs = [
+  {
+    id: 101,
+    title: 'Linux Terminal Mastery',
+    difficulty: 'Intermediate',
+    time: '45 mins',
+    tags: ['DevOps', 'CLI'],
+    language: 'Hindi',
+    image: 'https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 102,
+    title: 'React Hooks Deep Dive',
+    difficulty: 'Advanced',
+    time: '60 mins',
+    tags: ['Frontend', 'React'],
+    language: 'English',
+    image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 103,
+    title: 'MongoDB Schema Design',
+    difficulty: 'Beginner',
+    time: '30 mins',
+    tags: ['Database', 'NoSQL'],
+    language: 'Gujarati',
+    image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&auto=format&fit=crop&q=60'
+  }
+];
+
+export const mockActiveProjects = [
+  {
+    id: 201,
+    title: 'E-commerce Backend Service',
+    industry: 'Retail',
+    status: 'In Progress',
+    deadline: 'Oct 25',
+    tech: ['Node.js', 'Redis', 'Docker'],
+    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 202,
+    title: 'Health Tracking AI',
+    industry: 'Healthcare',
+    status: 'Review',
+    deadline: 'Oct 22',
+    tech: ['Python', 'TensorFlow', 'FastAPI'],
+    image: 'https://images.unsplash.com/photo-1505751172107-1698e60471b0?w=800&auto=format&fit=crop&q=60'
+  }
+];
+
+export const mockLeaderboard = [
+  { rank: 1, name: 'Aman Patel', city: 'Ahmedabad', xp: 4850, avatar: 'https://i.pravatar.cc/150?u=aman' },
+  { rank: 2, name: 'Sonal Verma', city: 'Indore', xp: 4210, avatar: 'https://i.pravatar.cc/150?u=sonal' },
+  { rank: 3, name: 'Dhruv Ozha', city: 'Bhuj', xp: 1840, avatar: 'https://i.pravatar.cc/150?u=dhruv', isCurrentUser: true },
+  { rank: 4, name: 'Rohan Singh', city: 'Varanasi', xp: 1620, avatar: 'https://i.pravatar.cc/150?u=rohan' },
+  { rank: 5, name: 'Priya Joshi', city: 'Pune', xp: 1580, avatar: 'https://i.pravatar.cc/150?u=priya' },
+];
+
+export const mockAnnouncements = [
+  {
+    id: 1,
+    type: 'new_course',
+    title: 'New Course: Advanced DevOps in Hindi',
+    date: 'Oct 18',
+    desc: 'Master CI/CD pipelines with industry-grade labs.'
+  },
+  {
+    id: 2,
+    type: 'achievement',
+    title: 'Community Milestone: 10,000 Scholars!',
+    date: 'Oct 16',
+    desc: 'We are officially Indias fastest growing bilingual tech community.'
+  }
+];

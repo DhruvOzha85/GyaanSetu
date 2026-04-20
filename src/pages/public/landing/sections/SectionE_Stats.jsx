@@ -61,8 +61,8 @@ const SectionE_Stats = () => {
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 md:gap-8">
           {stats.map((stat, i) => (
             <div key={i} className="flex flex-col items-center text-center text-white">
-              <div className="mb-6 p-4 bg-white/20 backdrop-blur-md rounded-2xl">
-                <stat.icon size={28} />
+              <div className="mb-6 p-5 bg-white/20 backdrop-blur-xl rounded-[2rem] border border-white/30 shadow-xl shadow-black/5">
+                <stat.icon size={30} strokeWidth={2.5} />
               </div>
               <h3 className="text-4xl md:text-5xl font-black mb-2 tracking-tighter">
                 <StatCounter 
@@ -70,7 +70,7 @@ const SectionE_Stats = () => {
                   suffix={stat.value.includes('+') ? '+' : (stat.suffix || '')} 
                 />
               </h3>
-              <p className="text-xs md:text-sm font-black uppercase tracking-widest opacity-80">
+              <p className="text-xs md:text-sm font-black uppercase tracking-widest text-white/95">
                 {stat.label}
               </p>
             </div>

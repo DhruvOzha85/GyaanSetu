@@ -44,16 +44,16 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-1">
+        <div className="hidden lg:flex items-center gap-2">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
               className={cn(
-                'px-4 py-2 rounded-xl text-sm font-bold transition-all hover:text-primary',
+                'px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:bg-slate-50 dark:hover:bg-slate-800',
                 location.pathname === link.path 
                   ? 'text-primary bg-orange-50 dark:bg-orange-900/20' 
-                  : 'text-gray-600 dark:text-gray-400'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100'
               )}
             >
               {link.name}
@@ -62,13 +62,17 @@ const Navbar = () => {
         </div>
 
         {/* Actions */}
-        <div className="hidden lg:flex items-center space-x-4">
+        <div className="hidden lg:flex items-center gap-4">
           <LanguageSwitcher />
           <Link to="/login">
-            <Button variant="ghost" size="sm">Login</Button>
+            <Button variant="ghost" size="sm" className="font-extrabold text-slate-700 dark:text-slate-300 hover:text-primary">
+              Login
+            </Button>
           </Link>
           <Link to="/signup">
-            <Button size="sm">Get Started</Button>
+            <Button size="sm" className="px-6 font-extrabold shadow-lg shadow-orange-200 dark:shadow-none bg-primary hover:bg-primary-hover text-white">
+              Get Started
+            </Button>
           </Link>
         </div>
 

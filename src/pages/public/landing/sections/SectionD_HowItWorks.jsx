@@ -35,9 +35,9 @@ const SectionD_HowItWorks = () => {
 
         <div className="relative">
           {/* Connecting Line (Desktop) */}
-          <div className="hidden lg:block absolute top-[40px] left-32 right-32 h-0.5 border-t-2 border-dashed border-slate-200 dark:border-slate-800" />
+          <div className="hidden lg:block absolute top-[40px] left-32 right-32 h-0.5 bg-slate-200 dark:bg-slate-800" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
             {steps.map((step, i) => (
               <motion.div
                 key={i}

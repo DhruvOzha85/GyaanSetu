@@ -319,24 +319,78 @@ export const mockRecommendedLabs = [
   }
 ];
 
-export const mockActiveProjects = [
+export const mockAllProjects = [
   {
-    id: 201,
-    title: 'E-commerce Backend Service',
-    industry: 'Retail',
-    status: 'In Progress',
-    deadline: 'Oct 25',
-    tech: ['Node.js', 'Redis', 'Docker'],
-    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&auto=format&fit=crop&q=60'
+    id: 1,
+    title: 'Fintech Mobile Wallet',
+    industry: 'Finance',
+    tech: ['React Native', 'Node.js', 'PostgreSQL', 'Redis'],
+    difficulty: 'Advanced',
+    teamSize: 3,
+    status: 'Open',
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=60',
+    description: 'Develop a high-security mobile wallet app with real-time transaction tracking and biometric authentication.'
   },
   {
-    id: 202,
-    title: 'Health Tracking AI',
+    id: 2,
+    title: 'Solar Monitoring Dashboard',
+    industry: 'Energy',
+    tech: ['React', 'D3.js', 'FastAPI', 'InfluxDB'],
+    difficulty: 'Intermediate',
+    teamSize: 2,
+    status: 'In Progress',
+    image: 'https://images.unsplash.com/photo-1509391307613-2d939634e447?w=800&auto=format&fit=crop&q=60',
+    description: 'Build a real-time IoT dashboard for monitoring distributed solar grids and predicting energy output.'
+  },
+  {
+    id: 3,
+    title: 'AI Diagnostics Tool',
     industry: 'Healthcare',
-    status: 'Review',
+    tech: ['Python', 'PyTorch', 'React', 'MongoDB'],
+    difficulty: 'Advanced',
+    teamSize: 4,
+    status: 'Open',
+    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&auto=format&fit=crop&q=60',
+    description: 'Create an AI-powered diagnostic aide that analyzes X-ray imagery for early detection of respiratory conditions.'
+  },
+  {
+    id: 4,
+    title: 'Supply Chain Optimizer',
+    industry: 'Logistics',
+    tech: ['Python', 'Pandas', 'Next.js', 'Google Maps API'],
+    difficulty: 'Intermediate',
+    teamSize: 2,
+    status: 'Completed',
+    image: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=60',
+    description: 'Optimize long-haul route planning for a logistics company using historical traffic and cost data.'
+  }
+];
+
+export const mockProjectTasks = [
+  { id: 101, title: 'Define API structure and endpoints', status: 'todo', priority: 'High', comments: 12, attachments: 2, assignees: ['https://i.pravatar.cc/150?u=1', 'https://i.pravatar.cc/150?u=2'] },
+  { id: 102, title: 'Implement Biometric Auth Flow', status: 'todo', priority: 'High', comments: 5, attachments: 1, assignees: ['https://i.pravatar.cc/150?u=3'] },
+  { id: 103, title: 'Setup PostgreSQL Database schema', status: 'inprogress', priority: 'Medium', comments: 8, attachments: 3, assignees: ['https://i.pravatar.cc/150?u=4'] },
+  { id: 104, title: 'Initial Project UI Mockups in Figma', status: 'done', priority: 'Low', comments: 24, attachments: 5, assignees: ['https://i.pravatar.cc/150?u=5'] },
+];
+
+export const mockActiveProjects = [
+  {
+    id: 1,
+    title: 'Fintech Mobile Wallet',
+    industry: 'Finance',
+    status: 'In Progress',
+    deadline: 'Oct 25',
+    tech: ['React Native', 'Node.js', 'PostgreSQL'],
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&auto=format&fit=crop&q=60'
+  },
+  {
+    id: 2,
+    title: 'Solar Monitoring Dashboard',
+    industry: 'Energy',
+    status: 'In Progress',
     deadline: 'Oct 22',
-    tech: ['Python', 'TensorFlow', 'FastAPI'],
-    image: 'https://images.unsplash.com/photo-1505751172107-1698e60471b0?w=800&auto=format&fit=crop&q=60'
+    tech: ['React', 'D3.js', 'FastAPI'],
+    image: 'https://images.unsplash.com/photo-1509391307613-2d939634e447?w=800&auto=format&fit=crop&q=60'
   }
 ];
 

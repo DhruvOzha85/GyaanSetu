@@ -32,6 +32,7 @@ export default [
       'no-unused-vars': 'warn',
       'react/react-in-jsx-scope': 'off',
       'no-console': 'warn',
+      'react-hooks/exhaustive-deps': 'warn',
     },
     settings: {
       react: {

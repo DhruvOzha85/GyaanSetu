@@ -11,6 +11,7 @@ const Button = React.forwardRef(({
   isDisabled = false,
   icon: Icon,
   children,
+  'aria-label': ariaLabel,
   ...props 
 }, ref) => {
   
@@ -28,12 +29,17 @@ const Button = React.forwardRef(({
     lg: 'px-8 py-3.5 text-lg'
   };
 
+  // Accessibility check for icon-only buttons
+  const finalAriaLabel = ariaLabel || (typeof children === 'string' ? children : undefined);
+
   return (
     <motion.button
       ref={ref}
       disabled={isDisabled || isLoading}
       whileHover={!isDisabled && !isLoading ? { scale: 1.02, y: -1 } : {}}
       whileTap={!isDisabled && !isLoading ? { scale: 0.98 } : {}}
+      aria-label={finalAriaLabel}
+      aria-busy={isLoading}
       className={cn(
         'inline-flex items-center justify-center rounded-xl font-bold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none active:shadow-inner',
         variants[variant],
@@ -45,7 +51,7 @@ const Button = React.forwardRef(({
       {isLoading ? (
         <div className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
       ) : Icon && (
-        <Icon className={cn('mr-2 h-5 w-5', children ? 'block' : 'mr-0')} />
+        <Icon className={cn('mr-2 h-5 w-5', children ? 'block' : 'mr-0')} aria-hidden="true" />
       )}
       {children}
     </motion.button>
@@ -61,7 +67,8 @@ Button.propTypes = {
   isLoading: PropTypes.bool,
   isDisabled: PropTypes.bool,
   icon: PropTypes.elementType,
-  children: PropTypes.node
+  children: PropTypes.node,
+  'aria-label': PropTypes.string
 };
 
 export default Button;

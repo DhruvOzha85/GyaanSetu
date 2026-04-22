@@ -25,6 +25,8 @@ const NavItem = ({ item, sidebarOpen }) => {
   return (
     <Link
       to={item.path}
+      aria-current={isActive ? 'page' : undefined}
+      aria-label={sidebarOpen ? undefined : item.name}
       className={cn(
         'flex items-center rounded-2xl transition-all duration-200 group relative mb-2 h-12',
         sidebarOpen ? 'px-4' : 'justify-center',
@@ -33,7 +35,7 @@ const NavItem = ({ item, sidebarOpen }) => {
           : 'text-gray-500 hover:bg-orange-50 hover:text-primary dark:text-gray-400 dark:hover:bg-orange-900/10'
       )}
     >
-      <Icon size={22} strokeWidth={isActive ? 2.5 : 2} />
+      <Icon size={22} strokeWidth={isActive ? 2.5 : 2} aria-hidden="true" />
       {sidebarOpen && (
         <span className="ml-3 font-bold text-[15px]">{item.name}</span>
       )}
@@ -47,7 +49,7 @@ const NavItem = ({ item, sidebarOpen }) => {
 
       {isActive && sidebarOpen && (
         <div className="ml-auto">
-          <ChevronRight size={14} className="opacity-50" />
+          <ChevronRight size={14} className="opacity-50" aria-hidden="true" />
         </div>
       )}
     </Link>

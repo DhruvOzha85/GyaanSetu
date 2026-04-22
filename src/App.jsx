@@ -11,11 +11,15 @@ import { Toaster } from 'react-hot-toast';
  * - Toast notifications layer
  * - Main routing entry point
  */
-import { useSelector } from 'react-redux';
+import { ThemeProvider, CssBaseline } from '@mui/material';
+import createMuiTheme from './theme/muiTheme';
 
 const App = () => {
   const { isDark } = useTheme();
   const { fontSize, reducedMotion, highContrast } = useSelector((state) => state.ui);
+
+  // Memoize theme to avoid unnecessary re-renders
+  const muiTheme = React.useMemo(() => createMuiTheme(isDark ? 'dark' : 'light'), [isDark]);
 
   useEffect(() => {
     // Sync theme class
@@ -50,19 +54,22 @@ const App = () => {
   }, [isDark, fontSize, reducedMotion, highContrast]);
 
   return (
-    <div className="min-h-screen bg-background-primary transition-colors duration-300">
-      <AppRouter />
-      <Toaster 
-        position="top-right"
-        toastOptions={{
-          style: {
-            borderRadius: '8px',
-            background: isDark ? '#1E293B' : '#FFFFFF',
-            color: isDark ? '#F1F5F9' : '#374151',
-          },
-        }}
-      />
-    </div>
+    <ThemeProvider theme={muiTheme}>
+      <CssBaseline />
+      <div className="min-h-screen bg-background-primary transition-colors duration-300">
+        <AppRouter />
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            style: {
+              borderRadius: '8px',
+              background: isDark ? '#1E293B' : '#FFFFFF',
+              color: isDark ? '#F1F5F9' : '#374151',
+            },
+          }}
+        />
+      </div>
+    </ThemeProvider>
   );
 };
 

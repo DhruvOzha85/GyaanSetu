@@ -58,6 +58,9 @@ const Contact = () => {
     <div className="pt-24 pb-32 bg-white dark:bg-slate-950">
       <Helmet>
         <title>Help Center | Support — GyaanSetu</title>
+        <meta name="description" content="Get support for GyaanSetu. Browse our bilingual help articles, FAQs, and guides, or contact our support team for help with labs, billing, and courses." />
+        <meta property="og:title" content="Help Center | Support — GyaanSetu" />
+        <meta property="og:description" content="We're here to help you succeed. Find answers to your questions in your preferred language." />
       </Helmet>
 
       {/* Hero / Search Section */}

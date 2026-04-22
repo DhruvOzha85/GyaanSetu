@@ -34,7 +34,10 @@ const Pricing = () => {
   return (
     <div className="pt-24 pb-32 px-4 md:px-8 bg-white dark:bg-slate-950 overflow-hidden">
       <Helmet>
-        <title>Pricing — GyaanSetu</title>
+        <title>Pricing Plans — GyaanSetu</title>
+        <meta name="description" content="Flexible pricing plans for GyaanSetu. Start for free with basic labs or upgrade to Pro for unlimited access to bilingual courses and cloud projects." />
+        <meta property="og:title" content="Pricing Plans — GyaanSetu" />
+        <meta property="og:description" content="Affordable practical skill building in your language. Explore our student-friendly pricing." />
       </Helmet>
 
       {/* Hero Section */}

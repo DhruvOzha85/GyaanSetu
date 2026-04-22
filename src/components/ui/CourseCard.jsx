@@ -6,7 +6,7 @@ import Card from './Card';
 import Badge from './Badge';
 import ProgressBar from './ProgressBar';
 
-const CourseCard = ({ course, className, variant = 'catalog' }) => {
+const CourseCard = React.memo(({ course, className, variant = 'catalog' }) => {
   // Ultra-defensive check
   if (!course) return null;
 
@@ -18,7 +18,12 @@ const CourseCard = ({ course, className, variant = 'catalog' }) => {
       >
         <div className="flex gap-6">
           <div className="w-40 h-24 rounded-2xl overflow-hidden relative flex-shrink-0">
-             <img src={course.image || ''} alt={course.title || 'Course'} className="w-full h-full object-cover" />
+             <img 
+               src={course.image || ''} 
+               alt={course.title || 'Course'} 
+               className="w-full h-full object-cover" 
+               loading="lazy"
+             />
              <div className="absolute top-2 left-2 flex flex-col gap-1">
                 <Badge variant="primary" className="text-[8px] px-1.5 py-0">{course.language || 'English'}</Badge>
                 <Badge variant="secondary" className="text-[8px] px-1.5 py-0">{course.level || 'Beginner'}</Badge>
@@ -67,6 +72,7 @@ const CourseCard = ({ course, className, variant = 'catalog' }) => {
           src={course.image || ''} 
           alt={course.title || 'Course thumbnail'} 
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
         />
         <div className="absolute top-3 left-3 flex flex-col gap-2">
           {course.isPopular && (
@@ -141,7 +147,9 @@ const CourseCard = ({ course, className, variant = 'catalog' }) => {
       </div>
     </Card>
   );
-};
+});
+
+CourseCard.displayName = 'CourseCard';
 
 CourseCard.propTypes = {
   course: PropTypes.object.isRequired,

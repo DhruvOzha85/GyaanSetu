@@ -12,7 +12,7 @@ import { cn } from '../../utils/cn';
 import Button from './Button';
 import Badge from './Badge';
 
-const ProjectCard = ({ project, className }) => {
+const ProjectCard = React.memo(({ project, className }) => {
   const {
     id,
     title,
@@ -49,6 +49,7 @@ const ProjectCard = ({ project, className }) => {
           src={image} 
           alt={title} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+          loading="lazy"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         
@@ -112,6 +113,8 @@ const ProjectCard = ({ project, className }) => {
       </div>
     </div>
   );
-};
+});
+
+ProjectCard.displayName = 'ProjectCard';
 
 export default ProjectCard;

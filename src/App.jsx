@@ -11,17 +11,43 @@ import { Toaster } from 'react-hot-toast';
  * - Toast notifications layer
  * - Main routing entry point
  */
+import { useSelector } from 'react-redux';
+
 const App = () => {
   const { isDark } = useTheme();
+  const { fontSize, reducedMotion, highContrast } = useSelector((state) => state.ui);
 
   useEffect(() => {
-    // Sync theme class with document root for Tailwind dark mode
+    // Sync theme class
     if (isDark) {
       document.documentElement.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
     }
-  }, [isDark]);
+
+    // Apply Font Size scaling
+    const fontSizeMap = {
+      1: '0.875rem', // Small
+      2: '1rem',     // Normal
+      3: '1.125rem', // Large
+      4: '1.25rem',  // XL
+    };
+    document.documentElement.style.setProperty('--font-size-base', fontSizeMap[fontSize] || '1rem');
+
+    // Apply Reduced Motion
+    if (reducedMotion) {
+      document.documentElement.classList.add('reduce-motion');
+    } else {
+      document.documentElement.classList.remove('reduce-motion');
+    }
+
+    // Apply High Contrast
+    if (highContrast) {
+      document.documentElement.classList.add('high-contrast');
+    } else {
+      document.documentElement.classList.remove('high-contrast');
+    }
+  }, [isDark, fontSize, reducedMotion, highContrast]);
 
   return (
     <div className="min-h-screen bg-background-primary transition-colors duration-300">

@@ -5,6 +5,15 @@ const initialState = {
   preferences: {
     language: 'en',
     theme: 'light',
+    notifications: {
+      courses: true,
+      labs: true,
+      achievements: true,
+      leaderboard: true,
+      messages: true,
+      announcements: true,
+      reports: true,
+    },
   },
   stats: {
     coursesEnrolled: 0,

@@ -161,6 +161,24 @@ code, pre, .font-mono {
   scroll-behavior: auto !important;
 }
 
+/* ─── High Contrast Mode ─────────────────────────────────────────── */
+.high-contrast {
+  --bg-primary: #000000;
+  --bg-secondary: #000000;
+  --bg-card: #000000;
+  --text-heading: #FFFFFF;
+  --text-body: #FFFFFF;
+  --text-placeholder: #FFFFFF;
+  --text-light: #FFFFFF;
+  --border-light: #FFFFFF;
+  --border-default: #FFFFFF;
+  --color-primary: #FFFF00; /* High contrast yellow */
+}
+
+.high-contrast * {
+  border-color: #FFFFFF !important;
+}
+
 /* ─── Utility: Gradient Text ─────────────────────────────────────── */
 .gradient-text {
   background: linear-gradient(135deg, #F97316 0%, #0D9488 100%);

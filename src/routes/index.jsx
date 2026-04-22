@@ -36,7 +36,7 @@ const ProjectCatalog = lazy(() => import('../pages/projects/ProjectCatalog'));
 const ProjectWorkspace = lazy(() => import('../pages/projects/ProjectWorkspace'));
 import StudentProfile from '../pages/profile/StudentProfile';
 import Leaderboard from '../pages/leaderboard/Leaderboard';
-const Settings = lazy(() => import('../pages/dashboard/Dashboard'));
+const Settings = lazy(() => import('../pages/settings/Settings'));
 
 const AppRouter = () => {
   useAnalytics(); // Auto-tracks page views

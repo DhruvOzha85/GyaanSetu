@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import AppRouter from './routes/index.jsx';
 import useTheme from './hooks/useTheme';
 import { Toaster } from 'react-hot-toast';

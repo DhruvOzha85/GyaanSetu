@@ -56,7 +56,9 @@ const testimonials = [
 
 export default function Landing() {
   const { t } = useLanguage();
+  const { user } = useAuth();
   const featured = courses.slice(0, 3);
+  const ctaLink = user ? "/courses" : "/signup";
   return (
     <>
       <SEO

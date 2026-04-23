@@ -45,9 +45,24 @@ export const courseService = {
     return { ok: true };
   },
   async create(payload) {
-    if (useReal) return (await api.post("/courses", payload)).data;
+    if (useReal) return (await api.post("/admin/courses", payload)).data;
     await fakeDelay();
-    return { ...mockCourses[0], ...payload, id: `c_${Date.now()}` };
+    return { id: "c_" + Date.now(), ...payload };
+  },
+  async update(id, payload) {
+    if (useReal) return (await api.put(`/admin/courses/${id}`, payload)).data;
+    await fakeDelay();
+    return { id, ...payload };
+  },
+  async delete(id) {
+    if (useReal) return (await api.delete(`/admin/courses/${id}`)).data;
+    await fakeDelay();
+    return { ok: true };
+  },
+  async updateModules(courseId, modules) {
+    if (useReal) return (await api.put(`/admin/courses/${courseId}/modules`, { modules })).data;
+    await fakeDelay();
+    return modules;
   },
 };
 

@@ -77,13 +77,75 @@ export const createCourse = async (req, res) => {
   }
 };
 
+// @desc    Update a course
+// @route   PUT /api/courses/:id
+// @access  Private/Admin
+export const updateCourse = async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+
+    if (course) {
+      Object.assign(course, req.body);
+      const updatedCourse = await course.save();
+      res.json(updatedCourse);
+    } else {
+      res.status(404).json({ message: 'Course not found' });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// @desc    Delete a course
+// @route   DELETE /api/courses/:id
+// @access  Private/Admin
+export const deleteCourse = async (req, res) => {
+  try {
+    const course = await Course.findById(req.params.id);
+
+    if (course) {
+      await course.deleteOne();
+      // Also delete modules
+      await Module.deleteMany({ courseId: course._id });
+      res.json({ message: 'Course and its modules removed' });
+    } else {
+      res.status(404).json({ message: 'Course not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
+// @desc    Update course modules
+// @route   PUT /api/courses/:id/modules
+// @access  Private/Admin
+export const updateModules = async (req, res) => {
+  try {
+    const courseId = req.params.id;
+    // For simplicity, we'll replace all modules with the provided list
+    // In a real app, you might want more granular updates
+    await Module.deleteMany({ courseId });
+    
+    const modulesData = req.body.modules.map(m => ({
+      ...m,
+      courseId
+    }));
+    
+    const createdModules = await Module.insertMany(modulesData);
+    res.json(createdModules);
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 // @desc    Fetch user's courses
 // @route   GET /api/me/courses
-// @access  Private (Currently public mock)
+// @access  Private
 export const getMyCourses = async (req, res) => {
   try {
-    const myCourses = await Course.find({ progress: { $gt: 0 } });
-    res.json(myCourses);
+    // This is now handled by enrollmentController.getMyEnrollments
+    // But keeping it for backward compatibility or direct access if needed
+    res.json([]); 
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

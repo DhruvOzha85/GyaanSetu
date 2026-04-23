@@ -17,13 +17,17 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
   cors: {
-    origin: '*', // For development, allow all origins
-    methods: ['GET', 'POST'],
+    origin: ["http://localhost:5173", "https://gyaansetuu.vercel.app"],
+    methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ["http://localhost:5173", "https://gyaansetuu.vercel.app"],
+  credentials: true
+}));
 app.use(express.json());
 
 // Connect to MongoDB

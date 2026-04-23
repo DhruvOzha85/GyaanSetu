@@ -8,10 +8,14 @@ import { ErrorBoundary } from "@/components/ErrorBoundary";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { MUIProvider } from "@/contexts/MUIProvider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
 import { ProtectedRoute, RoleRoute } from "@/components/RouteGuards";
+
 import { PublicLayout } from "@/components/layouts/PublicLayout";
 import { AdminLayout } from "@/components/layouts/AdminLayout";
 import { PageLoader } from "@/components/Loaders";
+import { ScrollToTop } from "@/components/ScrollToTop";
+
 
 // Public
 const Landing = lazy(() => import("./pages/Landing"));
@@ -28,6 +32,8 @@ const Login = lazy(() => import("./pages/Login"));
 const Signup = lazy(() => import("./pages/Signup"));
 const ForgotPassword = lazy(() => import("./pages/ForgotPassword"));
 const ResetPassword = lazy(() => import("./pages/ResetPassword"));
+const LanguageSelection = lazy(() => import("./pages/LanguageSelection"));
+
 
 // Student (protected)
 const StudentDashboard = lazy(() => import("./pages/StudentDashboard"));
@@ -53,102 +59,109 @@ const queryClient = new QueryClient({
 
 const App = () => (
   <ErrorBoundary>
-    <ThemeProvider>
-      <MUIProvider>
-        <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-            <AuthProvider>
-              <Suspense fallback={<PageLoader />}>
-                <Routes>
-                  {/* Public + student routes share PublicLayout */}
-                  <Route element={<PublicLayout />}>
-                    <Route path="/" element={<Landing />} />
-                    <Route path="/courses" element={<CoursesCatalog />} />
-                    <Route path="/courses/:id" element={<CourseDetail />} />
-                    <Route path="/labs" element={<LabsCatalog />} />
-                    <Route path="/labs/:id" element={<LabEnvironment />} />
-                    <Route path="/projects" element={<ProjectsCatalog />} />
-                    <Route path="/projects/:id" element={<ProjectWorkspace />} />
-                    <Route path="/pricing" element={<Pricing />} />
-                    <Route path="/leaderboard" element={<Leaderboard />} />
-                    <Route path="/help" element={<HelpCenter />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
-                    <Route path="/reset-password" element={<ResetPassword />} />
+    <LanguageProvider>
+      <ThemeProvider>
+        <MUIProvider>
+          <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+              <ScrollToTop />
+              <AuthProvider>
 
-                    {/* Protected student routes */}
-                    <Route
-                      path="/dashboard"
-                      element={
-                        <ProtectedRoute>
-                          <StudentDashboard />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/my-courses"
-                      element={
-                        <ProtectedRoute>
-                          <MyCourses />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/learn/:courseId/:lessonId"
-                      element={
-                        <ProtectedRoute>
-                          <CourseLearning />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/profile"
-                      element={
-                        <ProtectedRoute>
-                          <Profile />
-                        </ProtectedRoute>
-                      }
-                    />
-                    <Route
-                      path="/settings"
-                      element={
-                        <ProtectedRoute>
-                          <Settings />
-                        </ProtectedRoute>
-                      }
-                    />
-                  </Route>
+                <Suspense fallback={<PageLoader />}>
+                  <Routes>
+                    {/* Public + student routes share PublicLayout */}
+                    <Route element={<PublicLayout />}>
+                      <Route path="/" element={<Landing />} />
+                      <Route path="/courses" element={<CoursesCatalog />} />
+                      <Route path="/courses/:id" element={<CourseDetail />} />
+                      <Route path="/labs" element={<LabsCatalog />} />
+                      <Route path="/labs/:id" element={<LabEnvironment />} />
+                      <Route path="/projects" element={<ProjectsCatalog />} />
+                      <Route path="/projects/:id" element={<ProjectWorkspace />} />
+                      <Route path="/pricing" element={<Pricing />} />
+                      <Route path="/leaderboard" element={<Leaderboard />} />
+                      <Route path="/help" element={<HelpCenter />} />
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/signup" element={<Signup />} />
+                      <Route path="/forgot-password" element={<ForgotPassword />} />
+                      <Route path="/reset-password" element={<ResetPassword />} />
+                      <Route path="/language" element={<LanguageSelection />} />
 
-                  {/* Admin routes */}
-                  <Route
-                    path="/admin"
-                    element={
-                      <RoleRoute role="admin">
-                        <AdminLayout />
-                      </RoleRoute>
-                    }
-                  >
-                    <Route index element={<AdminOverview />} />
-                    <Route path="users" element={<AdminUsers />} />
-                    <Route path="courses" element={<AdminCourses />} />
-                    <Route path="courses/new" element={<AdminCourseBuilder />} />
-                    <Route path="courses/:id/edit" element={<AdminCourseBuilder />} />
-                    <Route path="analytics" element={<AdminAnalytics />} />
-                  </Route>
 
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </Suspense>
-            </AuthProvider>
-          </BrowserRouter>
-        </TooltipProvider>
-        </QueryClientProvider>
-      </MUIProvider>
-    </ThemeProvider>
+                      {/* Protected student routes */}
+                      <Route
+                        path="/dashboard"
+                        element={
+                          <ProtectedRoute>
+                            <StudentDashboard />
+                          </ProtectedRoute>
+                        }
+                      />
+                      <Route
+                        path="/my-courses"
+                        element={
+                          <ProtectedRoute>
+                            <MyCourses />
+                          </ProtectedRoute>
+                        }
+                      />
+                      <Route
+                        path="/learn/:courseId/:lessonId"
+                        element={
+                          <ProtectedRoute>
+                            <CourseLearning />
+                          </ProtectedRoute>
+                        }
+                      />
+                      <Route
+                        path="/profile"
+                        element={
+                          <ProtectedRoute>
+                            <Profile />
+                          </ProtectedRoute>
+                        }
+                      />
+                      <Route
+                        path="/settings"
+                        element={
+                          <ProtectedRoute>
+                            <Settings />
+                          </ProtectedRoute>
+                        }
+                      />
+                    </Route>
+
+                    {/* Admin routes */}
+                    <Route
+                      path="/admin"
+                      element={
+                        <RoleRoute role="admin">
+                          <AdminLayout />
+                        </RoleRoute>
+                      }
+                    >
+                      <Route index element={<AdminOverview />} />
+                      <Route path="users" element={<AdminUsers />} />
+                      <Route path="courses" element={<AdminCourses />} />
+                      <Route path="courses/new" element={<AdminCourseBuilder />} />
+                      <Route path="courses/:id/edit" element={<AdminCourseBuilder />} />
+                      <Route path="analytics" element={<AdminAnalytics />} />
+                    </Route>
+
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </Suspense>
+              </AuthProvider>
+            </BrowserRouter>
+          </TooltipProvider>
+          </QueryClientProvider>
+        </MUIProvider>
+      </ThemeProvider>
+    </LanguageProvider>
+
   </ErrorBoundary>
 );
 

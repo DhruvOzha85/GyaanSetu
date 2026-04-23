@@ -20,19 +20,14 @@
 
 ### Core Architecture
 - **React 18 + Vite**: Lightning-fast development and optimized production builds.
-- **TypeScript**: Strict type safety across the entire codebase.
+- **JavaScript (ES6+)**: Pure JS codebase for maximum performance and build simplicity.
 - **React Router v6**: Complex, lazy-loaded routing with guards.
 
-### State & Data Management
-- **Redux Toolkit**: Centralized global state (Auth, UI, User).
-- **Context API**: Lightweight state for Theme and Language preferences.
-- **TanStack Query (v5)**: Robust server state management and caching.
-
-### UI & Aesthetics
-- **Tailwind CSS**: Utility-first styling with a custom design system.
+### Design & Prototyping
+- **🎨 Figma Design**: [GyaanSetu Digital Courtyard](https://www.figma.com/design/VJS8z63ENFBdYR7R6728i3/GyaanSetu?node-id=0-1&t=z29S6KUnC5jqRb88-1)
 - **Shadcn UI (Radix)**: Accessible, high-quality component primitives.
-- **Material UI (MUI)**: Integrated for complex enterprise-grade interactions.
-- **Framer Motion**: Smooth page transitions and micro-animations.
+- **Tailwind CSS**: Utility-first styling with the "Radiant Scholar" system.
+
 
 ### Engineering Excellence
 - **Formik & Yup / React Hook Form & Zod**: Multi-standard form handling and validation.
@@ -55,8 +50,7 @@ GyaanSetu/
 │   │   ├── lib/        # Shared utilities (storage, cn, etc.)
 │   │   ├── pages/      # View components (Lazy loaded)
 │   │   ├── services/   # API & Socket service layers
-│   │   ├── store/      # Redux Toolkit slices
-│   │   └── types/      # TypeScript definitions
+│   │   └── store/      # Redux Toolkit slices
 │   └── public/         # Static assets & SEO files
 ```
 
@@ -104,9 +98,6 @@ npm test
 
 # Check for linting errors
 npm run lint
-
-# TypeScript type check
-npx tsc --noEmit
 ```
 
 ---

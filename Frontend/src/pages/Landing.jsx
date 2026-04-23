@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { SEO } from "@/components/SEO";
 import { Icon } from "@/components/Icon";
 import { courses } from "@/data/mock";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 
 const features = [
   {
@@ -20,7 +22,7 @@ const features = [
     description:
       "Complex technical concepts explained in your mother tongue. We offer comprehensive content in Hindi, Gujarati, Marathi, and Tamil alongside English.",
     bullets: ["Bilingual Support Forums", "Localized Case Studies"],
-    link: { label: "Browse Languages", to: "/courses" },
+    link: { label: "Browse Languages", to: "/language" },
   },
 ];
 
@@ -53,12 +55,13 @@ const testimonials = [
 ];
 
 export default function Landing() {
+  const { t } = useLanguage();
   const featured = courses.slice(0, 3);
   return (
     <>
       <SEO
-        title="GyaanSetu | Learn by Doing in Your Language"
-        description="High-quality technical education in Hindi, Gujarati, and English with browser-based hands-on labs. Bridge the gap between theory and industry."
+        title={t("hero.title")}
+        description={t("hero.subtitle")}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "EducationalOrganization",
@@ -75,19 +78,19 @@ export default function Landing() {
               The Digital Courtyard
             </span>
             <h1 className="text-5xl lg:text-6xl font-black tracking-tight leading-[1.05] text-on-surface">
-              Learn by Doing.
+              {t("hero.title").split(".")[0]}.
               <br />
-              <span className="text-primary">Learn in Your Language.</span>
+              <span className="text-primary">{t("hero.title").split(".")[1]}</span>
             </h1>
             <p className="text-lg text-on-surface-variant leading-relaxed max-w-lg">
-              Bridge the gap between theory and industry. Access high-quality technical education in Hindi, Gujarati, and English with cloud-based hands-on labs.
+              {t("hero.subtitle")}
             </p>
             <div className="flex flex-wrap gap-4">
               <Link
                 to="/signup"
                 className="px-8 py-4 primary-gradient text-on-primary font-bold rounded-xl shadow-ambient hover:shadow-ambient-lg transition-all flex items-center gap-2"
               >
-                Start Learning Free
+                {t("hero.cta")}
                 <Icon name="arrow_forward" />
               </Link>
               <Link

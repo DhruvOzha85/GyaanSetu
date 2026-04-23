@@ -23,6 +23,8 @@
 - **API**: Axios with centralized interceptors (Auth & Error handling)
 - **Testing**: Vitest, React Testing Library
 - **Analytics**: Google Analytics 4 integration
+- **Design**: [Figma Design System](https://www.figma.com/design/VJS8z63ENFBdYR7R6728i3/GyaanSetu?node-id=0-1&t=z29S6KUnC5jqRb88-1)
+
 
 ## 📁 Project Structure
 

@@ -20,7 +20,7 @@ export default function Signup() {
 
   const onSubmit = async (data) => {
     await signup(data);
-    navigate("/dashboard", { replace: true });
+    navigate("/language", { replace: true });
   };
 
   return (

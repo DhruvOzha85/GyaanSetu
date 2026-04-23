@@ -1,11 +1,13 @@
 import { SEO } from "@/components/SEO";
 import { useTheme } from "@/contexts/ThemeContext";
-import { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 import { Icon } from "@/components/Icon";
 
 export default function Settings() {
   const { theme, setTheme } = useTheme();
-  const [lang, setLang] = useState("en");
+  const { lang, setLang } = useLanguage();
+
   return (
     <>
       <SEO title="Settings" />

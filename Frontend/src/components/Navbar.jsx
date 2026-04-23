@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { Icon } from "@/components/Icon";
 import { cn } from "@/lib/utils";
 import {
@@ -14,17 +15,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
+
 const navItems = [
-  { to: "/", label: "Home" },
-  { to: "/courses", label: "Courses" },
-  { to: "/labs", label: "Labs" },
-  { to: "/projects", label: "Projects" },
-  { to: "/pricing", label: "Pricing" },
+  { to: "/", key: "nav.home", defaultLabel: "Home" },
+  { to: "/courses", key: "nav.courses", defaultLabel: "Courses" },
+  { to: "/labs", key: "nav.labs", defaultLabel: "Labs" },
+  { to: "/projects", key: "nav.projects", defaultLabel: "Projects" },
+  { to: "/pricing", key: "nav.pricing", defaultLabel: "Pricing" },
 ];
 
 export function Navbar() {
   const { isAuthenticated, user, logout, isAdmin } = useAuth();
   const { theme, toggle } = useTheme();
+  const { lang, setLang, t } = useLanguage();
   const { pathname } = useLocation();
   const [open, setOpen] = useState(false);
 
@@ -51,7 +54,7 @@ export function Navbar() {
                     : "text-on-surface-variant hover:text-primary-container",
                 )}
               >
-                {item.label}
+                {t(item.key) || item.defaultLabel}
               </Link>
             ))}
           </div>
@@ -60,12 +63,28 @@ export function Navbar() {
         <div className="hidden md:flex items-center gap-5">
           <div className="flex items-center gap-2 text-on-surface-variant font-medium text-sm">
             <Icon name="language" className="text-xl" />
-            <button className="hover:text-primary transition-colors">EN</button>
+            <button 
+              onClick={() => setLang("en")} 
+              className={cn("hover:text-primary transition-colors", lang === "en" && "text-primary font-black underline underline-offset-4")}
+            >
+              EN
+            </button>
             <span className="opacity-20">|</span>
-            <button className="hover:text-primary transition-colors">हिंदी</button>
+            <button 
+              onClick={() => setLang("hi")} 
+              className={cn("hover:text-primary transition-colors", lang === "hi" && "text-primary font-black underline underline-offset-4")}
+            >
+              हिंदी
+            </button>
             <span className="opacity-20">|</span>
-            <button className="hover:text-primary transition-colors">ગુજ</button>
+            <button 
+              onClick={() => setLang("gu")} 
+              className={cn("hover:text-primary transition-colors", lang === "gu" && "text-primary font-black underline underline-offset-4")}
+            >
+              ગુજ
+            </button>
           </div>
+
           <button
             aria-label="Toggle theme"
             onClick={toggle}
@@ -116,15 +135,16 @@ export function Navbar() {
           ) : (
             <>
               <Link to="/login" className="font-bold text-on-surface-variant hover:text-primary transition-colors text-sm">
-                Sign in
+                {t("nav.login")}
               </Link>
               <Link
                 to="/signup"
                 className="px-5 py-2.5 primary-gradient text-on-primary font-bold rounded-xl active:scale-95 duration-150 transition-transform text-sm"
               >
-                Sign Up
+                {t("nav.signup")}
               </Link>
             </>
+
           )}
         </div>
 
@@ -160,8 +180,9 @@ export function Navbar() {
                         : "text-on-surface-variant hover:bg-surface-container-low",
                     )}
                   >
-                    {item.label}
+                    {t(item.key) || item.defaultLabel}
                   </Link>
+
                 ))}
                 <div className="h-px bg-outline-variant/40 my-3" />
                 {isAuthenticated ? (

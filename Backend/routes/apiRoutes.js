@@ -1,15 +1,14 @@
 import express from 'express';
-import { courses, labs, projects, courseModules } from '../data/mock.js';
+import { getCourses, getCourseById, getCourseModules } from '../controllers/courseController.js';
+import { getLabs } from '../controllers/labController.js';
+import { getProjects } from '../controllers/projectController.js';
 
 const router = express.Router();
 
-router.get('/courses', (req, res) => res.json(courses));
-router.get('/courses/:id', (req, res) => {
-    const course = courses.find((c) => c.id === req.params.id || c.slug === req.params.id);
-    res.json(course || {});
-});
-router.get('/courses/:id/modules', (req, res) => res.json(courseModules));
-router.get('/labs', (req, res) => res.json(labs));
-router.get('/projects', (req, res) => res.json(projects));
+router.get('/courses', getCourses);
+router.get('/courses/:id', getCourseById);
+router.get('/courses/:id/modules', getCourseModules);
+router.get('/labs', getLabs);
+router.get('/projects', getProjects);
 
 export default router;

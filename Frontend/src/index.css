@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  GyaanSetu — "The Digital Courtyard" design system.
+  All colors are HSL. Tokens lifted from the Stitch heritage palette.
+*/
+
+@layer base {
+  :root {
+    /* Stitch GyaanSetu palette → HSL */
+    --primary: 26 100% 31%;            /* #9d4300 */
+    --primary-foreground: 0 0% 100%;
+    --primary-container: 22 94% 53%;   /* #f97316 */
+    --on-primary-container: 24 100% 17%;
+    --on-primary: 0 0% 100%;
+    --primary-fixed: 24 100% 90%;      /* #ffdbca */
+    --on-primary-fixed: 24 100% 10%;   /* #341100 */
+
+    --secondary: 174 100% 21%;         /* #006a61 */
+    --secondary-foreground: 0 0% 100%;
+    --on-secondary: 0 0% 100%;
+    --secondary-container: 171 80% 74%;/* #86f2e4 */
+    --on-secondary-container: 174 100% 22%;
+    --secondary-fixed: 171 84% 75%;    /* #89f5e7 */
+    --on-secondary-fixed: 173 100% 6%; /* #00201d */
+
+    --tertiary: 37 100% 26%;           /* #855300 */
+    --tertiary-container: 38 100% 42%; /* #d78900 */
+    --on-tertiary: 0 0% 100%;
+    --tertiary-fixed: 35 100% 86%;     /* #ffddb8 */
+    --on-tertiary-fixed: 32 100% 8%;   /* #2a1700 */
+
+    --error: 0 84% 42%;                /* #ba1a1a */
+    --on-error: 0 0% 100%;
+    --error-container: 6 100% 92%;     /* #ffdad6 */
+    --on-error-container: 358 100% 29%;
+
+    --surface: 210 14% 97%;            /* #f8f9fa */
+    --on-surface: 200 9% 11%;          /* #191c1d */
+    --on-surface-variant: 19 24% 28%;  /* #584237 */
+    --surface-container-lowest: 0 0% 100%;
+    --surface-container-low: 210 9% 95%;     /* #f3f4f5 */
+    --surface-container: 210 6% 93%;         /* #edeeef */
+    --surface-container-high: 210 4% 91%;    /* #e7e8e9 */
+    --surface-container-highest: 200 5% 89%; /* #e1e3e4 */
+    --surface-variant: 200 5% 89%;
+    --surface-dim: 210 3% 86%;
+    --surface-bright: 210 14% 97%;
+
+    --outline: 19 16% 47%;             /* #8c7164 */
+    --outline-variant: 22 50% 79%;     /* #e0c0b1 */
+
+    --inverse-surface: 200 4% 19%;
+    --inverse-on-surface: 210 5% 95%;
+    --inverse-primary: 23 100% 78%;
+
+    /* shadcn semantic mappings */
+    --background: 210 14% 97%;
+    --foreground: 200 9% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 200 9% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 200 9% 11%;
+    --muted: 210 9% 95%;
+    --muted-foreground: 19 24% 28%;
+    --accent: 210 6% 93%;
+    --accent-foreground: 200 9% 11%;
+    --destructive: 0 84% 42%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 22 50% 79%;
+    --input: 210 9% 95%;
+    --ring: 26 100% 31%;
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 9% 95%;
+    --sidebar-foreground: 19 24% 28%;
+    --sidebar-primary: 26 100% 31%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 6% 93%;
+    --sidebar-accent-foreground: 26 100% 31%;
+    --sidebar-border: 22 50% 79%;
+    --sidebar-ring: 26 100% 31%;
+  }
+
+  .dark {
+    --primary: 23 100% 78%;
+    --primary-foreground: 24 100% 17%;
+    --primary-container: 22 94% 53%;
+    --on-primary-container: 24 100% 90%;
+    --on-primary: 24 100% 10%;
+    --primary-fixed: 24 100% 90%;
+    --on-primary-fixed: 24 100% 10%;
+
+    --secondary: 171 84% 75%;
+    --secondary-foreground: 174 100% 6%;
+    --on-secondary: 174 100% 6%;
+    --secondary-container: 174 100% 22%;
+    --on-secondary-container: 171 80% 74%;
+    --secondary-fixed: 171 84% 75%;
+    --on-secondary-fixed: 173 100% 6%;
+
+    --tertiary: 35 100% 86%;
+    --tertiary-container: 38 100% 42%;
+    --on-tertiary: 32 100% 8%;
+    --tertiary-fixed: 35 100% 86%;
+    --on-tertiary-fixed: 32 100% 8%;
+
+    --error: 6 100% 80%;
+    --on-error: 358 100% 16%;
+    --error-container: 358 100% 29%;
+    --on-error-container: 6 100% 92%;
+
+    --surface: 200 8% 8%;
+    --on-surface: 210 5% 90%;
+    --on-surface-variant: 22 30% 75%;
+    --surface-container-lowest: 200 10% 6%;
+    --surface-container-low: 200 8% 11%;
+    --surface-container: 200 7% 14%;
+    --surface-container-high: 200 6% 18%;
+    --surface-container-highest: 200 5% 22%;
+    --surface-variant: 200 6% 18%;
+    --surface-dim: 200 8% 8%;
+    --surface-bright: 200 6% 22%;
+
+    --outline: 19 16% 60%;
+    --outline-variant: 19 16% 30%;
+
+    --inverse-surface: 210 5% 90%;
+    --inverse-on-surface: 200 4% 19%;
+    --inverse-primary: 26 100% 31%;
+
+    --background: 200 8% 8%;
+    --foreground: 210 5% 90%;
+    --card: 200 8% 11%;
+    --card-foreground: 210 5% 90%;
+    --popover: 200 8% 11%;
+    --popover-foreground: 210 5% 90%;
+    --muted: 200 7% 14%;
+    --muted-foreground: 22 30% 75%;
+    --accent: 200 6% 18%;
+    --accent-foreground: 210 5% 90%;
+    --destructive: 6 100% 80%;
+    --destructive-foreground: 358 100% 16%;
+    --border: 19 16% 30%;
+    --input: 200 7% 14%;
+    --ring: 23 100% 78%;
+
+    --sidebar-background: 200 8% 11%;
+    --sidebar-foreground: 22 30% 75%;
+    --sidebar-primary: 23 100% 78%;
+    --sidebar-primary-foreground: 24 100% 17%;
+    --sidebar-accent: 200 7% 14%;
+    --sidebar-accent-foreground: 23 100% 78%;
+    --sidebar-border: 19 16% 30%;
+    --sidebar-ring: 23 100% 78%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-surface text-on-surface font-body antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+  ::selection {
+    @apply bg-primary-fixed text-on-primary-fixed;
+  }
+}
+
+@layer components {
+  .material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+  .ms-fill {
+    font-variation-settings: 'FILL' 1;
+  }
+  .primary-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-container)) 100%);
+  }
+  .hero-gradient {
+    background: linear-gradient(135deg, hsl(var(--surface-container-lowest)) 0%, hsl(24 100% 96%) 100%);
+  }
+  .glass-nav {
+    background-color: hsl(var(--surface) / 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+}

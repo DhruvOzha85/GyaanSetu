@@ -19,10 +19,15 @@ export const userService = {
     return seedUsers;
   },
   async setRole(id, role) {
-    if (useReal) return (await api.patch(`/admin/users/${id}`, { role })).data;
+    if (useReal) return (await api.put(`/admin/users/${id}/role`, { role })).data;
     await fakeDelay();
     const u = seedUsers.find((x) => x.id === id);
     if (u) u.role = role;
     return u;
+  },
+  async delete(id) {
+    if (useReal) return (await api.delete(`/admin/users/${id}`)).data;
+    await fakeDelay();
+    return { ok: true };
   },
 };

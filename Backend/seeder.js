@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import bcrypt from 'bcryptjs';
+import User from './models/User.js';
 import Course from './models/Course.js';
 import Module from './models/Module.js';
 import Lab from './models/Lab.js';
@@ -21,6 +23,7 @@ const importData = async () => {
     await Module.deleteMany();
     await Lab.deleteMany();
     await Project.deleteMany();
+    await User.deleteMany();
 
     // Insert Courses
     const createdCourses = await Course.insertMany(courses);
@@ -44,7 +47,26 @@ const importData = async () => {
     await Lab.insertMany(labs);
     await Project.insertMany(projects);
 
-    console.log('Data Imported successfully!');
+    // Create Admin and Student Users
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash('Admin@1234', salt);
+    
+    await User.create({
+      name: 'Admin User',
+      email: 'admin@gyaansetu.in',
+      password: hashedPassword,
+      role: 'admin'
+    });
+
+    const studentPassword = await bcrypt.hash('Student@1234', salt);
+    await User.create({
+      name: 'Arjun Sharma',
+      email: 'arjun@gyaansetu.in',
+      password: studentPassword,
+      role: 'student'
+    });
+
+    console.log('Data Imported successfully! (Including Users)');
     process.exit();
   } catch (error) {
     console.error(`Error: ${error.message}`);

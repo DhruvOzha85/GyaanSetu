@@ -9,7 +9,7 @@
 * **Backend Deployed API:** [https://gyaansetu-593c.onrender.com](https://gyaansetu-593c.onrender.com)
 * **Postman Documentation:** [https://documenter.getpostman.com/view/50839208/2sBXqKoL8c](https://documenter.getpostman.com/view/50839208/2sBXqKoL8c)
 * **Figma Design:** [View on Figma](https://www.figma.com/design/VJS8z63ENFBdYR7R6728i3/GyaanSetu?node-id=0-1&t=z29S6KUnC5jqRb88-1)
-* **YouTube Demo:** [https://youtu.be/cfDD_ksm9BU](https://youtu.be/cfDD_ksm9BU)
+* **YouTube Demo:** [https://youtu.be/gR04mMXNnL0](https://youtu.be/gR04mMXNnL0)
 
 ---
 
